@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <!-- Add other columns as needed -->
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the list of students and display each student -->
+                <tr *ngFor="let student of students">
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <!-- Display other student details -->
+                    <td>
+                        <!-- Add update and delete buttons with corresponding event handlers -->
+                        <button (click)="editStudent(student)">Edit</button>
+                        <button (click)="deleteStudent(student.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button (click)="createStudent()">Create New Student</button>
+        <form (submit)="saveStudent()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="newStudent.name" required>
+            <!-- Add other input fields for student details -->
+            <button type="submit">Save</button>
+        </form>
+        
+    </div>
+    
+</body>
+</html>
